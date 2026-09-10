@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United Strings — Gypsy Jazz Trio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --walnut: #1c140f;
+    --walnut-2: #2a1d15;
+    --parchment: #eee3ce;
+    --parchment-dim: #c9b99e;
+    --brass: #c08a35;
+    --brass-bright: #dba24a;
+    --wine: #6e2a26;
+    --line: rgba(238,227,206,0.16);
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--walnut);
+    color: var(--parchment);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  h1,h2,h3{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.005em;
+  }
+  a{ color: var(--brass-bright); }
+  img{ display:block; max-width:100%; }
+  .wrap{ max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---- NAV ---- */
+  nav{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(28,20,15,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 16px 28px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+  }
+  .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
+  .navlinks a{ color: var(--parchment-dim); text-decoration:none; }
+  .navlinks a:hover{ color: var(--brass-bright); }
+
+  /* ---- HERO ---- */
+  .hero{
+    position: relative;
+    min-height: 92vh;
+    display:flex; align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    filter: saturate(0.92) contrast(1.03);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(0deg, rgba(15,10,7,0.94) 4%, rgba(15,10,7,0.45) 42%, rgba(15,10,7,0.15) 65%, rgba(15,10,7,0.55) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    width:100%;
+    padding: 0 28px 64px;
+  }
+  .hero-content .wrap{ padding:0; }
+  .kicker{
+    color: var(--brass-bright);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    font-family: 'Work Sans', sans-serif;
+  }
+  .hero h1{
+    font-size: clamp(2.8rem, 8vw, 6.2rem);
+    line-height: 0.98;
+    color: var(--parchment);
+  }
+  .hero-sub{
+    margin-top: 18px;
+    max-width: 520px;
+    color: var(--parchment-dim);
+    font-size: 1.05rem;
+  }
+
+  /* ---- SECTION GENERIC ---- */
+  section{ padding: 96px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .section-head{
+    display:flex; align-items:baseline; gap:18px;
+    margin-bottom: 44px;
+  }
+  .section-num{
+    color: var(--brass);
+    font-family:'Fraunces', serif;
+    font-size: 1rem;
+  }
+  .section-head h2{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items:start;
+  }
+  .about-grid p{
+    font-size: 1.08rem;
+    color: var(--parchment);
+    margin: 0 0 18px;
+    max-width: 60ch;
+  }
+  .about-grid p:last-child{ margin-bottom:0; }
+  .lineup{
+    border-left: 1px solid var(--line);
+    padding-left: 32px;
+  }
+  .lineup-item{ margin-bottom: 26px; }
+  .lineup-item:last-child{ margin-bottom:0; }
+  .lineup-item .role{
+    color: var(--brass-bright);
+    font-size: 0.85rem;
+    text-transform: none;
+    margin-bottom: 4px;
+  }
+  .lineup-item .name{
+    font-family:'Fraunces', serif;
+    font-size: 1.25rem;
+  }
+
+  /* ---- LISTEN / VIDEO ---- */
+  .video-frame{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: var(--walnut-2);
+    border: 1px solid var(--line);
+    overflow:hidden;
+  }
+  .video-frame iframe, .video-frame .placeholder{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    border:0;
+  }
+  .video-frame .placeholder{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap: 14px;
+    text-align:center;
+    padding: 24px;
+    color: var(--parchment-dim);
+  }
+  .play-dot{
+    width: 62px; height:62px;
+    border-radius:50%;
+    border: 1px solid var(--brass);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .play-dot::after{
+    content:"";
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent var(--brass-bright);
+    margin-left: 4px;
+  }
+  .video-caption{
+    margin-top: 18px;
+    color: var(--parchment-dim);
+    font-size: 0.95rem;
+    max-width: 60ch;
+  }
+
+  /* ---- SHOWS ---- */
+  .shows-list{ list-style:none; margin:0; padding:0; }
+  .shows-list li{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .shows-list li:first-child{ border-top: 1px solid var(--line); }
+  .show-date{
+    font-family:'Fraunces', serif;
+    color: var(--brass-bright);
+    font-size: 1.05rem;
+    min-width: 130px;
+  }
+  .show-venue{ flex:1; }
+  .show-venue .place{ font-size: 1.05rem; }
+  .show-venue .city{ color: var(--parchment-dim); font-size: 0.9rem; margin-top:2px; }
+  .empty-note{
+    color: var(--parchment-dim);
+    font-style: italic;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+  .contact-block h3{
+    font-size: 1.1rem;
+    color: var(--brass-bright);
+    margin-bottom: 10px;
+  }
+  .contact-block p, .contact-block a{
+    font-size: 1.05rem;
+    text-decoration:none;
+  }
+  .contact-block a{ border-bottom: 1px solid var(--brass); padding-bottom:1px; }
+
+  footer{
+    padding: 32px 0 48px;
+    text-align:center;
+    color: var(--parchment-dim);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 760px){
+    .about-grid, .contact-grid{ grid-template-columns: 1fr; }
+    .lineup{ border-left:none; padding-left:0; border-top:1px solid var(--line); padding-top:28px; }
+    .navlinks{ gap: 16px; font-size: 0.82rem; }
+    section{ padding: 64px 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">United Strings</div>
+    <div class="navlinks">
+      <a href="#o-nas">O nás</a>
+      <a href="#video">Video</a>
+      <a href="#koncerty">Koncerty</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <img src="band.jpg" alt="United Strings hrajú na akustických gitarách a kontrabase na drevenom pódiu">
+  <div class="hero-content">
+    <div class="wrap">
+      <div class="kicker">Gypsy jazz trio</div>
+      <h1>United<br>Strings</h1>
+      <p class="hero-sub">Dve gitary, kontrabas a repertoár postavený na swingu manouche štýlu. Živá hudba pre kluby, súkromné akcie aj jazzové večery.</p>
+    </div>
+  </div>
+</header>
+
+<section id="o-nas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>O nás</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>United Strings je trio postavené okolo dvoch akustických gitár a kontrabasu — nástrojovej zostavy, ktorá formovala gypsy jazz od čias Djanga Reinhardta. Hráme repertoár plný swingových štandardov, vlastných aranžmánov a improvizácie, ktorá necháva priestor každému nástroju.</p>
+        <p>Kapelu si môžete objednať na jazzové kluby, súkromné oslavy, svadby aj firemné akcie — akustická zostava sa dobre prispôsobí menšiemu aj väčšiemu priestoru.</p>
+      </div>
+      <div class="lineup">
+        <div class="lineup-item">
+          <div class="role">Sólová gitara</div>
+          <div class="name">Doplniť meno</div>
+        </div>
+        <div class="lineup-item">
+          <div class="role">Rytmická gitara</div>
+          <div class="name">Doplniť meno</div>
+        </div>
+        <div class="lineup-item">
+          <div class="role">Kontrabas</div>
+          <div class="name">Doplniť meno</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Pozrite si nás hrať</h2>
+    </div>
+    <div class="video-frame">
+      <!--
+        Keď budeš mať YouTube video, nahraď celý <div class="placeholder">...</div>
+        blok týmto riadkom (VIDEO_ID nahraď ID z odkazu youtube.com/watch?v=VIDEO_ID):
+
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="United Strings live" allowfullscreen></iframe>
+      -->
+      <div class="placeholder">
+        <div class="play-dot"></div>
+        <div>Tu bude video z vášho vystúpenia<br>(pošli mi odkaz na YouTube a vložím ho sem)</div>
+      </div>
+    </div>
+    <p class="video-caption">Odporúčam natočiť aspoň jedno krátke video (2–3 minúty) priamo z vystúpenia — na Google aj pre návštevníkov to je najsilnejší dôkaz, ako kapela naozaj znie.</p>
+  </div>
+</section>
+
+<section id="koncerty">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Najbližšie koncerty</h2>
+    </div>
+    <ul class="shows-list">
+      <li>
+        <span class="show-date">Dátum</span>
+        <span class="show-venue">
+          <div class="place">Názov klubu / miesta</div>
+          <div class="city">Mesto</div>
+        </span>
+      </li>
+    </ul>
+    <p class="empty-note" style="margin-top:20px;">Pošli mi termíny koncertov a doplním ich sem.</p>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Kontakt a booking</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Objednávky na akcie</h3>
+        <p><a href="mailto:info@unitedstrings.sk">info@unitedstrings.sk</a></p>
+        <p style="margin-top:8px; color:var(--parchment-dim);">Doplň skutočný e-mail / telefón</p>
+      </div>
+      <div class="contact-block">
+        <h3>Sledujte nás</h3>
+        <p><a href="#">Instagram</a></p>
+        <p style="margin-top:8px;"><a href="#">Facebook</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  United Strings — Gypsy Jazz Trio
+</footer>
+
+</body>
+</html>
