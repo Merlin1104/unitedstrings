@@ -53,7 +53,11 @@
     font-family:'Fraunces', serif;
     font-size: 1.15rem;
     letter-spacing: 0.02em;
+    color: var(--parchment);
+    text-decoration: none;
+    cursor: pointer;
   }
+  .brand:hover{ color: var(--brass-bright); }
   .navlinks{ display:flex; gap: 28px; font-size: 0.92rem; }
   .navlinks a{ color: var(--parchment-dim); text-decoration:none; }
   .navlinks a:hover{ color: var(--brass-bright); }
@@ -252,7 +256,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="brand">United Strings</div>
+    <a class="brand" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">United Strings</a>
     <div class="navlinks">
       <a href="#o-nas">O nás</a>
       <a href="#video">Video</a>
@@ -276,7 +280,6 @@
 <section id="o-nas">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">01</span>
       <h2>O nás</h2>
     </div>
     <div class="about-grid">
@@ -305,7 +308,6 @@
 <section id="video">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">02</span>
       <h2>Pozrite si nás hrať</h2>
     </div>
     <div class="video-frame">
@@ -315,10 +317,7 @@
 
         <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="United Strings live" allowfullscreen></iframe>
       -->
-      <div class="placeholder">
-        <div class="play-dot"></div>
-        <div>Tu bude video z vášho vystúpenia<br>(pošli mi odkaz na YouTube a vložím ho sem)</div>
-      </div>
+      <iframe src="https://www.youtube.com/embed/oRZmFR2KFI0" title="United Strings live" allowfullscreen></iframe>
     </div>
     <p class="video-caption">Odporúčam natočiť aspoň jedno krátke video (2–3 minúty) priamo z vystúpenia — na Google aj pre návštevníkov to je najsilnejší dôkaz, ako kapela naozaj znie.</p>
   </div>
@@ -327,7 +326,6 @@
 <section id="koncerty">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">03</span>
       <h2>Najbližšie koncerty</h2>
     </div>
     <ul class="shows-list">
@@ -346,7 +344,6 @@
 <section id="kontakt">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-num">04</span>
       <h2>Kontakt a booking</h2>
     </div>
     <div class="contact-grid">
